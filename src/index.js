@@ -3,11 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './assets/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { TourProvider } from '@reactour/tour';
+
+const steps = [
+  {
+    selector: '.first',
+    content: "私が返答しまっせ"
+  },
+  {
+    selector: '.second',
+    content: "選んでくださいまし"
+  },
+  {
+    selector: '.third',
+    content: "回答ここに出るぜ★"
+  }
+]
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <TourProvider steps={steps}>
+      <App />
+    </TourProvider>
   </React.StrictMode>
 );
 

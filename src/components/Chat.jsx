@@ -10,13 +10,15 @@ const Chat = (props) =>{
   const classes = isQuestion ? "p-chat__row" : "p-chat__reverse";
   return(
     <ListItem className = {classes}>
-      <ListItemAvatar>
-        {isQuestion ? (
-          <Avatar alt="icon" src={supportIcon} />
-        ):(
-          <Avatar alt="icon" src={NoProfile} />
-        )}
-      </ListItemAvatar>
+      <div className='first'>
+        <ListItemAvatar>
+          {isQuestion ? (
+            <Avatar alt="icon" src={supportIcon} />
+          ):(
+            <Avatar alt="icon" src={NoProfile} />
+          )}
+        </ListItemAvatar>
+      </div>
     <div className="p-chat__bubble">{props.text}</div>
   </ListItem>
   )

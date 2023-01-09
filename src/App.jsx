@@ -3,6 +3,8 @@ import defaultDataset from './dataset';
 import './assets/styles/style.css'
 import { AnswersList, Chats } from './components/index';
 import FormDialog from './components/forms/FormDialog';
+import { useTour } from '@reactour/tour';
+import { Button } from '@material-ui/core';
 
 const App = () => {
   const [answers, setAnswers] = useState([]);
@@ -10,6 +12,7 @@ const App = () => {
   const [currentId, setCurrentId] = useState("init");
   const [dataset, setDataset] = useState({});
   const [open, setOpen] = useState(false);
+  const { setIsOpen } = useTour();
 
   const handleOpen = useCallback(() => {
     setOpen(true)
@@ -69,15 +72,17 @@ const App = () => {
       scrollArea.scrollTop = scrollArea.scrollHeight;
     }
   });
-    return (
-        <section className="c-section">
-            <div className="c-box">
-              <Chats chats={chats} />
-              <AnswersList answers={answers} select={selectAnswer}/>
-              <FormDialog open={open} handleOpen={handleOpen} handleClose={handleClose}/>
-            </div>
-        </section>
-    )
+
+  return (
+      <section className="c-section">
+          <Button onClick={() => setIsOpen(true)}>ガイド開始！</Button>
+          <div className="c-box">
+            <Chats chats={chats} />
+            <AnswersList answers={answers} select={selectAnswer}/>
+            <FormDialog open={open} handleOpen={handleOpen} handleClose={handleClose}/>
+          </div>
+      </section>
+  )
 }
 
 export default App;
